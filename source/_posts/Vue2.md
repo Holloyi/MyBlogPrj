@@ -1,10 +1,14 @@
 ---
 title: Vue2
 tags: [Vue2,Web,框架]
-description: 记录Vue2学习笔记
-top_img: https://s1.ax1x.com/2022/09/09/vqOZDA.jpg
+categories: 大前端
+date: 2022-09-10
+updated:  2022-09-10
+description: 黑马Vue2学习笔记
+top_img: https://static.runoob.com/images/mix/code-wallpaper-22.jpg
+cover: https://static.runoob.com/images/mix/code-wallpaper-22.jpg
 connents: 
-cover: https://s1.ax1x.com/2022/09/09/vqq9q1.jpg
+aside: false
 ---
 
 # Vue2
