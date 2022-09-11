@@ -1,7 +1,7 @@
 ---
-title: Ajax
-tags: [Ajax,Web]
-categories: 大前端
+title: Ajax学习笔记
+tags: [Ajax,Web,笔记]
+categories: 前端
 date: 2022-08-15
 updated:  2022-08-15
 description: 黑马Ajax学习笔记

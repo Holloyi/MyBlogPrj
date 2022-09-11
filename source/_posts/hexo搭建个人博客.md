@@ -1,6 +1,6 @@
 ---
 title: hexo搭建个人博客
-tags: [Hexo,Nodejs,Git]
+tags: [Hexo,Nodejs,Git,建站]
 categories: 建站
 date: 2022-09-10
 updated:  2022-09-10

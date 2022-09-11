@@ -1,7 +1,7 @@
 ---
-title: Vue2
-tags: [Vue2,Web,框架]
-categories: 大前端
+title: Vue2学习笔记
+tags: [Vue2,Web,框架,笔记]
+categories: 前端
 date: 2022-09-10
 updated:  2022-09-10
 description: 黑马Vue2学习笔记
