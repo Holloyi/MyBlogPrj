@@ -1,0 +1,670 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Vue2学习笔记 | Holloyi</title><meta name="keywords" content="Web,笔记,Vue2,框架"><meta name="author" content="王小泥"><meta name="copyright" content="王小泥"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="黑马Vue2学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue2学习笔记">
+<meta property="og:url" content="https://holloyi.github.io/2022/09/10/Vue2/index.html">
+<meta property="og:site_name" content="Holloyi">
+<meta property="og:description" content="黑马Vue2学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://static.runoob.com/images/mix/code-wallpaper-22.jpg">
+<meta property="article:published_time" content="2022-09-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-09T16:00:00.000Z">
+<meta property="article:author" content="王小泥">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="Vue2">
+<meta property="article:tag" content="框架">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.runoob.com/images/mix/code-wallpaper-22.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://holloyi.github.io/2022/09/10/Vue2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Vue2学习笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-10 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s1.ax1x.com/2022/09/09/vqOZDA.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://static.runoob.com/images/mix/code-wallpaper-22.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Holloyi</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Vue2学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-09T16:00:00.000Z" title="发表于 2022-09-10 00:00:00">2022-09-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-09T16:00:00.000Z" title="更新于 2022-09-10 00:00:00">2022-09-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vue2学习笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前端工程化与webpack"><a href="#前端工程化与webpack" class="headerlink" title="前端工程化与webpack"></a>前端工程化与webpack</h2><h3 id="前端工程化"><a href="#前端工程化" class="headerlink" title="前端工程化"></a>前端工程化</h3><p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/KCOCCAYA3E" alt="img"></p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/OGOCCAYAHY" alt="img"></p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/P6OCCAYATM" alt="img"></p>
+<h3 id="webpack基本使用"><a href="#webpack基本使用" class="headerlink" title="webpack基本使用"></a>webpack基本使用</h3><p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/V6OCCAYATM" alt="img"></p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/Z6OCCAYBKY" alt="img"></p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/4COCCAYAKU" alt="img"></p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/7GOCCAYAIY" alt="img"></p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/BGOSCAYACY" alt="img"></p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/DCOSCAYAWY" alt="img"></p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/E2OSCAYAMY" alt="img"></p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/G2OSCAYAQY" alt="img"></p>
+<hr>
+<h2 id="六大指令"><a href="#六大指令" class="headerlink" title="六大指令"></a>六大指令</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
+<li><ul>
+<li><p>指令(directives)是vue为开发者提供的模板语法,用于辅助开发者渲染页面的基本结构</p>
+</li>
+<li><p>vue中的指令****按用途****可以分为以下6类:</p>
+</li>
+<li><ol>
+<li>内容渲染指令</li>
+<li>属性绑定指令</li>
+<li>事件绑定指令</li>
+<li>双向绑定指令</li>
+<li>条件渲染指令</li>
+<li>列表渲染指令</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="内容渲染指令"><a href="#内容渲染指令" class="headerlink" title="内容渲染指令"></a>内容渲染指令</h3><ul>
+<li><ul>
+<li>v-text</li>
+</ul>
+</li>
+</ul>
+<p>v-text会覆盖原内容</p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/52PCCAYBF4" alt="img"></p>
+<ul>
+<li><ul>
+<li><code>&#123;&#123;&#125;&#125;</code></li>
+</ul>
+</li>
+</ul>
+<p>插值表达式,最常用,可写js表达式进行简单处理</p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/AWPSCAYAUQ" alt="img"></p>
+<ul>
+<li><ul>
+<li>v-html</li>
+</ul>
+</li>
+</ul>
+<p>用于渲染html文本</p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/GSPSCAYA3M" alt="img"></p>
+<h3 id="属性绑定指令"><a href="#属性绑定指令" class="headerlink" title="属性绑定指令"></a>属性绑定指令</h3><ul>
+<li><ul>
+<li>v-bind</li>
+</ul>
+</li>
+</ul>
+<p>作用:动态的为元素的属性绑定属性值</p>
+<p>例:</p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/PKPSCAYACY" alt="img"></p>
+<ul>
+<li><ul>
+<li>简写  “:”</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/TCPSCAYAMU" alt="img"></p>
+<ul>
+<li><ul>
+<li>属性绑定指令中可写js表达式,进行简单处理</li>
+</ul>
+</li>
+</ul>
+<h3 id="事件绑定指令"><a href="#事件绑定指令" class="headerlink" title="事件绑定指令"></a>事件绑定指令</h3><ul>
+<li><ul>
+<li><p>v-on</p>
+</li>
+<li><ul>
+<li>作用:为dom元素绑定事件监听</li>
+<li>语法:</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/DWQCCAYAPM" alt="img"></p>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/F6QCCAYARM" alt="img"></p>
+<ul>
+<li><ul>
+<li>简写 “@”</li>
+<li>事件参数对象</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/O6QCCAYAH4" alt="img"></p>
+<ul>
+<li><ul>
+<li>$event</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/TGQCCAYARE" alt="img"></p>
+<ul>
+<li><ul>
+<li>事件修饰符</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/XOQCCAYAQY" alt="img"></p>
+<ul>
+<li><ul>
+<li>按键修饰符</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/4OQCCAYAKE" alt="img"></p>
+<h3 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h3><ul>
+<li><ul>
+<li>v-model</li>
+<li>作用:绑定表单元素,实现双向数据绑定</li>
+<li>修饰符</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/MSQSCAYAFY" alt="img"></p>
+<h3 id="条件渲染指令"><a href="#条件渲染指令" class="headerlink" title="条件渲染指令"></a>条件渲染指令</h3><ul>
+<li><ul>
+<li><p>v-if and v-show</p>
+</li>
+<li><ul>
+<li><p>作用: 控制dom元素的显示与隐藏</p>
+</li>
+<li><p>区别</p>
+</li>
+<li><ul>
+<li><p>1.实现方式不同</p>
+</li>
+<li><ul>
+<li>v-if 指令会动态地创建或移除 DOM 元素，从而控制元素在页面上的显示与隐藏；</li>
+<li>v-show 指令会动态为元素添加或移除 style&#x3D;”display: none;” 样式，从而控制元素的显示与隐藏；</li>
+</ul>
+</li>
+<li><p>2.性能销毁不同</p>
+</li>
+<li><ul>
+<li>v-if 有更高的切换开销,如果在运行时条件很少改变，则使用 v-if 较好</li>
+<li>v-show 有更高的初始渲染开销,如果需要非常频繁地切换，则使用 v-show 较好</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>v-else</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/MCRCCAYAFE" alt="img"></p>
+<ul>
+<li><ul>
+<li>v-else-if</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/PGRCCAYAHY" alt="img"></p>
+<h3 id="列表渲染指令"><a href="#列表渲染指令" class="headerlink" title="列表渲染指令"></a>列表渲染指令</h3><ul>
+<li><ul>
+<li>v-for</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/E6RSCAYATM" alt="img"></p>
+<ul>
+<li><ul>
+<li>v-for中的索引</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/J6RSCAYATM" alt="img"></p>
+<ul>
+<li><ul>
+<li>使用key维护列表的状态</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/NCRSCAYAH4" alt="img"></p>
+<ul>
+<li><ul>
+<li>key的注意事项</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/Q2RSCAYAGY" alt="img"></p>
+<hr>
+<h2 id="过滤器、侦听器、计算属性"><a href="#过滤器、侦听器、计算属性" class="headerlink" title="过滤器、侦听器、计算属性"></a>过滤器、侦听器、计算属性</h2><h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/DMICGAYAAU" alt="img"></p>
+<h2 id="组件间数据传输"><a href="#组件间数据传输" class="headerlink" title="组件间数据传输"></a>组件间数据传输</h2><h3 id="父传子"><a href="#父传子" class="headerlink" title="父传子"></a>父传子</h3><ul>
+<li><ul>
+<li><ul>
+<li><p>父传子,通过****自定义属性****实现,具体步骤如下</p>
+</li>
+<li><ol>
+<li>在子组件中定义props(自定义属性)</li>
+<li>父组件使用子组件时,通过子组件的自定义属性传值</li>
+<li>示例如下</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/UMICGAYAUM" alt="img"></p>
+<h3 id="子传父"><a href="#子传父" class="headerlink" title="子传父"></a>子传父</h3><ul>
+<li><ul>
+<li><ul>
+<li><p>子传父,通过****自定义事件****实现,具体步骤如下</p>
+</li>
+<li><ol>
+<li>在子组建中通过$emit(‘事件名’,参数…)触发事件</li>
+<li>在父组件中通过 @事件名&#x3D;’函数名’监听事件,并在函数中作处理</li>
+<li>示例如下</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/O4JCGAYAAY" alt="img"></p>
+<h3 id="任意传值"><a href="#任意传值" class="headerlink" title="任意传值"></a>任意传值</h3><ul>
+<li><ul>
+<li><ul>
+<li>在vue2.0中,通过****EventBus****实现任意传值</li>
+<li>步骤</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/GUJSGAYAYE" alt="img"></p>
+<ul>
+<li><ul>
+<li><ul>
+<li>示例</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/DAJSGAYAYE" alt="img"></p>
+<h2 id="Ref引用"><a href="#Ref引用" class="headerlink" title="Ref引用"></a>Ref引用</h2><ul>
+<li><ul>
+<li>作用:辅助开发者在不依赖jQuery的情况下,获取DOM元素或组件的引用</li>
+<li>this.$nextTick(cb)方法</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/UQJSGAYASE" alt="img"></p>
+<h2 id="动态组件、插槽、自定义指令"><a href="#动态组件、插槽、自定义指令" class="headerlink" title="动态组件、插槽、自定义指令"></a>动态组件、插槽、自定义指令</h2><h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><h3 id="前端路由"><a href="#前端路由" class="headerlink" title="前端路由"></a>前端路由</h3><h4 id="SPA与前端路由"><a href="#SPA与前端路由" class="headerlink" title="SPA与前端路由"></a>SPA与前端路由</h4><p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/GD4SSAYBRA" alt="img"></p>
+<h4 id="前端路由-1"><a href="#前端路由-1" class="headerlink" title="前端路由"></a>前端路由</h4><p>​      Hash地址与组件之间的对应关系</p>
+<h4 id="前端路由的工作方式"><a href="#前端路由的工作方式" class="headerlink" title="前端路由的工作方式"></a>前端路由的工作方式</h4><p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/O34SSAYA3I" alt="img"></p>
+<h4 id="手撸前端路由"><a href="#手撸前端路由" class="headerlink" title="手撸前端路由"></a>手撸前端路由</h4><ol>
+<li><ol>
+<li><ol>
+<li>通过  标签，结合 comName 动态渲染组件。示例代码如下：</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/6P4SSAYAUM" alt="img"></p>
+<ol>
+<li><ol>
+<li><ol>
+<li>在 App.vue 组件中，为  链接添加对应的 hash 值</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/A35CSAYAUM" alt="img"></p>
+<ol>
+<li><ol>
+<li><ol>
+<li>在 created 生命周期函数中，监听浏览器地址栏中 hash 地址的变化，动态切换要展示的组件的名称：</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/CX5CSAYAJ4" alt="img"></p>
+<h3 id="vue-router的基本使用"><a href="#vue-router的基本使用" class="headerlink" title="vue-router的基本使用"></a>vue-router的基本使用</h3><h4 id="vue-router简介"><a href="#vue-router简介" class="headerlink" title="vue-router简介"></a>vue-router简介</h4><p>vue-router 是 vue.js 官方给出的路由解决方案。它只能结合 vue 项目进行使用，能够轻松的管理 SPA 项目 中组件的切换</p>
+<h4 id="vue-router安装和配置"><a href="#vue-router安装和配置" class="headerlink" title="vue-router安装和配置"></a>vue-router安装和配置</h4><ol>
+<li><ol>
+<li><ol>
+<li>安装vue-router包</li>
+<li>创建src&#x2F;router&#x2F;index.js</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">//导入Vue和VueRouter</span><br><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line">import VueRouter from &#x27;vue-router&#x27;</span><br><span class="line"></span><br><span class="line">//Vue使用VueRouter插件</span><br><span class="line">Vue.use(VueRouter)</span><br><span class="line"></span><br><span class="line">//创建router对象</span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  //配置路由规则</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; path: &#x27;/&#x27;, redirect: &#x27;/login&#x27; &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#x27;/login&#x27;,</span><br><span class="line">      component: Login</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#x27;/home&#x27;,</span><br><span class="line">      component: Home,</span><br><span class="line">      children: [</span><br><span class="line">        &#123; path: &#x27;users&#x27;, component: Users &#125;,</span><br><span class="line">        &#123; path: &#x27;userinfo/:id&#x27;, component: UserDetail, props: true &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//全局前置守卫</span><br><span class="line">router.beforeEach((to, from, next) =&gt; &#123;</span><br><span class="line">  const pathArr = [&#x27;/home&#x27;, &#x27;/home/users&#x27;, &#x27;/home/rights&#x27;]</span><br><span class="line">  if (pathArr.indexOf(to.path) !== -1) &#123;</span><br><span class="line">    const token = localStorage.getItem(&#x27;token&#x27;)</span><br><span class="line">    if (token) &#123;</span><br><span class="line">      next()</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      next(&#x27;/login&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    next()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//向外暴露router对象</span><br><span class="line">export default router</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><ol>
+<li><ol>
+<li>在main.js文件中导入并挂载路由模块</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/EL5SSAYA2U" alt="img"></p>
+<ol>
+<li><ol>
+<li><ol>
+<li>声明路由连接和占位符</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/ND5SSAYAJ4" alt="img"></p>
+<h3 id="vue-router的常见用法"><a href="#vue-router的常见用法" class="headerlink" title="vue-router的常见用法"></a>vue-router的常见用法</h3><ol>
+<li><p>路由重定向</p>
+</li>
+<li><p>嵌套路由(子路由)</p>
+</li>
+<li><p>声明式子路由连接和子路由占位符</p>
+</li>
+<li><p>动态路由</p>
+</li>
+<li><ol>
+<li>动态路由</li>
+<li>$route.params</li>
+<li>props</li>
+</ol>
+</li>
+<li><p>声明式导航 编程式导航</p>
+</li>
+<li><p>路由守卫</p>
+</li>
+</ol>
+<h3 id="后台管理案例"><a href="#后台管理案例" class="headerlink" title="后台管理案例"></a>后台管理案例</h3><hr>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="Vue中”-”的使用"><a href="#Vue中”-”的使用" class="headerlink" title="Vue中”@”的使用"></a>Vue中”@”的使用</h3><ul>
+<li><ul>
+<li>“@”代表这src目录</li>
+<li>使用”@”代替”.&#x2F;“  “..&#x2F;“ 更加清晰</li>
+<li>实现原理,别名配置</li>
+</ul>
+</li>
+</ul>
+<h3 id="Vue的特性"><a href="#Vue的特性" class="headerlink" title="Vue的特性"></a>Vue的特性</h3><ul>
+<li><ul>
+<li>数据驱动视图</li>
+<li>双向数据绑定</li>
+<li>Vue-MVVM模式</li>
+</ul>
+</li>
+</ul>
+<h3 id="Vue的指令"><a href="#Vue的指令" class="headerlink" title="Vue的指令"></a>Vue的指令</h3><h4 id="1-分类"><a href="#1-分类" class="headerlink" title="1.分类"></a>1.分类</h4><p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/HDXBQAYAZI" alt="img"></p>
+<h4 id="2-内容指令"><a href="#2-内容指令" class="headerlink" title="2.内容指令"></a>2.内容指令</h4><p>内容渲染指令用来辅助开发者渲染 DOM 元素的文本内容</p>
+<ul>
+<li><ul>
+<li><ul>
+<li>v-text    会覆盖</li>
+<li><code>&#123;&#123;&#125;&#125;</code>         占位符,里面可写简单js</li>
+<li>v-html   针对于html文本</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-属性指令"><a href="#3-属性指令" class="headerlink" title="3.属性指令"></a>3.属性指令</h4><ul>
+<li><ul>
+<li><ul>
+<li>v-bind:属性名    为元素的属性动态绑定值</li>
+<li>简写    :</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-事件指令"><a href="#4-事件指令" class="headerlink" title="4.事件指令"></a>4.事件指令</h4><ul>
+<li><ul>
+<li><ul>
+<li><p>v-on:click v:on:input</p>
+</li>
+<li><p>简写:@click   @input</p>
+</li>
+<li><p>事件参数对象</p>
+</li>
+<li><p>事件修饰符</p>
+</li>
+<li><ul>
+<li>prevent,阻止跳转</li>
+<li>stop,阻止事件穿透,冒泡</li>
+</ul>
+</li>
+<li><p>按键修饰符</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-双向绑定指令"><a href="#5-双向绑定指令" class="headerlink" title="5.双向绑定指令"></a>5.双向绑定指令</h4><ul>
+<li><ul>
+<li><ul>
+<li>v-model</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-条件指令"><a href="#6-条件指令" class="headerlink" title="6.条件指令"></a>6.条件指令</h4><ul>
+<li><ul>
+<li><ul>
+<li>v-if</li>
+<li>v-else</li>
+<li>v-else-if</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-列表指令"><a href="#7-列表指令" class="headerlink" title="7.列表指令"></a>7.列表指令</h4><ul>
+<li><ul>
+<li><ul>
+<li>v-for</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.kdocs.cn/api/v3/office/copy/T0pBeFNINXRwOTdzWkxBZEo5TjZ1ZFJwY215aUxoL3FXWE1oeEYyWEIxRUpqOEdNcDQrSnFWMWRWekZkQnFLLzcvUWxqdFRLZVlUTGdoMWVMSGVXS1FOSUk4K3VvMkxQSVpYazNuWXd1U0Y2dkU2Y05nN0NuM3pYV3hEUmphVGtGZWxoUkx6V0tNSUc2V2xiM290OGFyZTQwYy9Qa0R6M3Bid0g1YjBVWW5CQVorOURlMXhDM2N0MUZwakthM1U0dTJjdmJUK2R6amdZMEVwMWkrRGRrRGdWR050bHhycXpHQ0ZyYjdLNkk4QXBTazNOKzludjRvM3lhWkt3SmlPWlhNUWpubFJqaFA4PQ==/attach/object/4BCBWAYARE" alt="img"></p>
+<hr>
+<h3 id="VSCode插件"><a href="#VSCode插件" class="headerlink" title="VSCode插件"></a>VSCode插件</h3><h4 id="path-autocomplete"><a href="#path-autocomplete" class="headerlink" title="path-autocomplete"></a>path-autocomplete</h4><ul>
+<li><ul>
+<li><ul>
+<li>作用:路径补全</li>
+<li>配置:在settings.json文件中添加如下配置</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//path-autocomplte插件设置</span><br><span class="line"> //1.导入文件时是否携带拓展名</span><br><span class="line"> &quot;path-autocomplete.extensionOnImport&quot;: true,</span><br><span class="line"> //2.配置@的路径提示</span><br><span class="line"> &quot;path-autocomplete.pathMappings&quot;: &#123;</span><br><span class="line">     &quot;@&quot;: &quot;$&#123;folder&#125;/src&quot;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h4 id="prettier"><a href="#prettier" class="headerlink" title="prettier"></a>prettier</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/*  prettier的配置 */</span><br><span class="line">    &quot;prettier.printWidth&quot;: 100, // 超过最大值换行</span><br><span class="line">    &quot;prettier.tabWidth&quot;: 4, // 缩进字节数</span><br><span class="line">    &quot;prettier.useTabs&quot;: false, // 缩进不使用tab，使用空格</span><br><span class="line">    &quot;prettier.semi&quot;: true, // 句尾添加分号</span><br><span class="line">    &quot;prettier.singleQuote&quot;: true, // 使用单引号代替双引号</span><br><span class="line">    &quot;prettier.proseWrap&quot;: &quot;preserve&quot;, // 默认值。因为使用了一些折行敏感型的渲染器（如GitHub comment）而按照markdown文本样式进行折行</span><br><span class="line">    &quot;prettier.arrowParens&quot;: &quot;avoid&quot;, //  (x) =&gt; &#123;&#125; 箭头函数参数只有一个时是否要有小括号。avoid：省略括号</span><br><span class="line">    &quot;prettier.bracketSpacing&quot;: true, // 在对象，数组括号与文字之间加空格 &quot;&#123; foo: bar &#125;&quot;</span><br><span class="line">    &quot;prettier.disableLanguages&quot;: [&quot;vue&quot;], // 不格式化vue文件，vue文件的格式化单独设置</span><br><span class="line">    &quot;prettier.endOfLine&quot;: &quot;auto&quot;, // 结尾是 \n \r \n\r auto</span><br><span class="line">    &quot;prettier.eslintIntegration&quot;: false, //不让prettier使用eslint的代码格式进行校验</span><br><span class="line">    &quot;prettier.htmlWhitespaceSensitivity&quot;: &quot;ignore&quot;,</span><br><span class="line">    &quot;prettier.ignorePath&quot;: &quot;.prettierignore&quot;, // 不使用prettier格式化的文件填写在项目的.prettierignore文件中</span><br><span class="line">    &quot;prettier.jsxBracketSameLine&quot;: false, // 在jsx中把&#x27;&gt;&#x27; 是否单独放一行</span><br><span class="line">    &quot;prettier.jsxSingleQuote&quot;: false, // 在jsx中使用单引号代替双引号</span><br><span class="line">    &quot;prettier.parser&quot;: &quot;babylon&quot;, // 格式化的解析器，默认是babylon</span><br><span class="line">    &quot;prettier.requireConfig&quot;: false, // Require a &#x27;prettierconfig&#x27; to format prettier</span><br><span class="line">    &quot;prettier.stylelintIntegration&quot;: false, //不让prettier使用stylelint的代码格式进行校验</span><br><span class="line">    &quot;prettier.trailingComma&quot;: &quot;es5&quot;, // 在对象或数组最后一个元素后面是否加逗号（在ES5中加尾逗号）</span><br><span class="line">    &quot;prettier.tslintIntegration&quot;: false // 不让prettier使用tslint的代码格式进行校验</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://holloyi.github.io">王小泥</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://holloyi.github.io/2022/09/10/Vue2/">https://holloyi.github.io/2022/09/10/Vue2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://holloyi.github.io" target="_blank">Holloyi</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Web/">Web</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><a class="post-meta__tags" href="/tags/Vue2/">Vue2</a><a class="post-meta__tags" href="/tags/%E6%A1%86%E6%9E%B6/">框架</a></div><div class="post_share"><div class="social-share" data-image="https://static.runoob.com/images/mix/code-wallpaper-22.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/09/10/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><img class="prev-cover" src="https://i.loli.net/2020/01/20/BdaA59flE4bMoCr.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">hexo搭建个人博客</div></div></a></div><div class="next-post pull-right"><a href="/2022/09/01/NodeJs/"><img class="next-cover" src="https://static.runoob.com/images/mix/code-wallpaper-6.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">NodeJs学习笔记</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/08/15/Ajax/" title="Ajax学习笔记"><img class="cover" src="https://static.runoob.com/images/mix/code-wallpaper-18.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-15</div><div class="title">Ajax学习笔记</div></div></a></div><div><a href="/2022/09/01/NodeJs/" title="NodeJs学习笔记"><img class="cover" src="https://static.runoob.com/images/mix/code-wallpaper-6.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-01</div><div class="title">NodeJs学习笔记</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8Ewebpack"><span class="toc-number">1.</span> <span class="toc-text">前端工程化与webpack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">前端工程化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">webpack基本使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E5%A4%A7%E6%8C%87%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">六大指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E6%B8%B2%E6%9F%93%E6%8C%87%E4%BB%A4"><span class="toc-number">2.2.</span> <span class="toc-text">内容渲染指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E7%BB%91%E5%AE%9A%E6%8C%87%E4%BB%A4"><span class="toc-number">2.3.</span> <span class="toc-text">属性绑定指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E6%8C%87%E4%BB%A4"><span class="toc-number">2.4.</span> <span class="toc-text">事件绑定指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A"><span class="toc-number">2.5.</span> <span class="toc-text">双向数据绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93%E6%8C%87%E4%BB%A4"><span class="toc-number">2.6.</span> <span class="toc-text">条件渲染指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93%E6%8C%87%E4%BB%A4"><span class="toc-number">2.7.</span> <span class="toc-text">列表渲染指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8%E3%80%81%E4%BE%A6%E5%90%AC%E5%99%A8%E3%80%81%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">过滤器、侦听器、计算属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">5.</span> <span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%97%B4%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="toc-number">6.</span> <span class="toc-text">组件间数据传输</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%B6%E4%BC%A0%E5%AD%90"><span class="toc-number">6.1.</span> <span class="toc-text">父传子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E4%BC%A0%E7%88%B6"><span class="toc-number">6.2.</span> <span class="toc-text">子传父</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E4%BC%A0%E5%80%BC"><span class="toc-number">6.3.</span> <span class="toc-text">任意传值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ref%E5%BC%95%E7%94%A8"><span class="toc-number">7.</span> <span class="toc-text">Ref引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6%E3%80%81%E6%8F%92%E6%A7%BD%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="toc-number">8.</span> <span class="toc-text">动态组件、插槽、自定义指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1"><span class="toc-number">9.</span> <span class="toc-text">路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1"><span class="toc-number">9.1.</span> <span class="toc-text">前端路由</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SPA%E4%B8%8E%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1"><span class="toc-number">9.1.1.</span> <span class="toc-text">SPA与前端路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1-1"><span class="toc-number">9.1.2.</span> <span class="toc-text">前端路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="toc-number">9.1.3.</span> <span class="toc-text">前端路由的工作方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E6%92%B8%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1"><span class="toc-number">9.1.4.</span> <span class="toc-text">手撸前端路由</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-router%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">9.2.</span> <span class="toc-text">vue-router的基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-router%E7%AE%80%E4%BB%8B"><span class="toc-number">9.2.1.</span> <span class="toc-text">vue-router简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-router%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="toc-number">9.2.2.</span> <span class="toc-text">vue-router安装和配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-router%E7%9A%84%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="toc-number">9.3.</span> <span class="toc-text">vue-router的常见用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E6%A1%88%E4%BE%8B"><span class="toc-number">9.4.</span> <span class="toc-text">后台管理案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">10.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E4%B8%AD%E2%80%9D-%E2%80%9D%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">10.1.</span> <span class="toc-text">Vue中”@”的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">10.2.</span> <span class="toc-text">Vue的特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E7%9A%84%E6%8C%87%E4%BB%A4"><span class="toc-number">10.3.</span> <span class="toc-text">Vue的指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%86%E7%B1%BB"><span class="toc-number">10.3.1.</span> <span class="toc-text">1.分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%86%85%E5%AE%B9%E6%8C%87%E4%BB%A4"><span class="toc-number">10.3.2.</span> <span class="toc-text">2.内容指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%B1%9E%E6%80%A7%E6%8C%87%E4%BB%A4"><span class="toc-number">10.3.3.</span> <span class="toc-text">3.属性指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%BA%8B%E4%BB%B6%E6%8C%87%E4%BB%A4"><span class="toc-number">10.3.4.</span> <span class="toc-text">4.事件指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E6%8C%87%E4%BB%A4"><span class="toc-number">10.3.5.</span> <span class="toc-text">5.双向绑定指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E6%9D%A1%E4%BB%B6%E6%8C%87%E4%BB%A4"><span class="toc-number">10.3.6.</span> <span class="toc-text">6.条件指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%88%97%E8%A1%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">10.3.7.</span> <span class="toc-text">7.列表指令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VSCode%E6%8F%92%E4%BB%B6"><span class="toc-number">10.4.</span> <span class="toc-text">VSCode插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#path-autocomplete"><span class="toc-number">10.4.1.</span> <span class="toc-text">path-autocomplete</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#prettier"><span class="toc-number">10.4.2.</span> <span class="toc-text">prettier</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 王小泥</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">谢谢你长的这么好看,还看到最后 :)</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://holloyi.github.io/2022/09/10/Vue2/'
+    this.page.identifier = '/2022/09/10/Vue2/'
+    this.page.title = 'Vue2学习笔记'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+
+  document.getElementById('darkmode').addEventListener('click', () => {
+    setTimeout(() => window.disqusReset(), 200)
+  })
+}
+
+if ('Valine' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
